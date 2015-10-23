@@ -9,3 +9,7 @@ See <http://flowerpassword.com/>
 * `echo '{"password": "YOUR-PASSWORD"}' > .huami.json`
 * `huami YOUR-KEY`
 * done
+
+## Warning
+
+Keep your .huami.json file safe, do not share it with others
