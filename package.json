@@ -1,24 +1,27 @@
 {
-    "name": "huami",
-    "version": "1.0.0",
-    "description": "huami cli",
-    "main": "index.js",
-    "scripts": {},
-    "author": {
-        "name": "lyuehh",
-        "email": "lyuehh@gmail.com",
-        "url": "http://lyuehh.com/"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/lyuehh/huami"
-    },
-    "bin": {
-        "huami": "./index.js"
-    },
-    "license": "MIT",
-    "dependencies": {
-        "to-clipboard": "^0.2.0"
-    }
-
+  "name": "huami",
+  "version": "2.0.0",
+  "description": "huami cli",
+  "main": "index.js",
+  "scripts": {},
+  "author": {
+    "name": "lyuehh",
+    "email": "lyuehh@gmail.com",
+    "url": "http://lyuehh.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lyuehh/huami"
+  },
+  "bin": {
+    "huami": "./index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "prompt": "^0.2.14",
+    "to-clipboard": "^0.2.0"
+  },
+  "engines": {
+    "node": ">= 0.12.0"
+  }
 }

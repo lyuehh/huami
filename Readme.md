@@ -7,9 +7,10 @@ See <http://flowerpassword.com/>
 * `npm install -g huami`
 * `cd`
 * `echo '{"password": "YOUR-PASSWORD"}' > .huami.json`
-* `huami YOUR-KEY`
+* `huami` and enter your key
 * done
 
 ## Warning
 
-Keep your .huami.json file safe, do not share it with others
+* require node > 0.12.0
+* Keep your .huami.json file safe, do not share it with others
