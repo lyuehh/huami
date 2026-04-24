@@ -4,6 +4,7 @@ import clipboard from 'clipboardy';
 import { access, readFile } from 'node:fs/promises';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
+import { pathToFileURL } from 'node:url';
 import { createInterface } from 'node:readline/promises';
 import { stdin, stdout } from 'node:process';
 
@@ -14,6 +15,17 @@ interface HuamiConfig {
 }
 
 const CONFIG_PATH = join(homedir(), '.huami.json');
+
+const isAbortError = (error: unknown): error is Error & { code: string } =>
+  error instanceof Error && 'code' in error && error.code === 'ABORT_ERR';
+
+export const handlePromptError = (error: unknown): never => {
+  if (isAbortError(error)) {
+    process.exit(130);
+  }
+
+  throw error;
+};
 
 const exitWithMessage = (message: string, exitCode: number): never => {
   console.error(message);
@@ -53,9 +65,13 @@ const promptKey = async (): Promise<string> => {
     }
 
     return key;
+  } catch (error) {
+    handlePromptError(error);
   } finally {
     readline.close();
   }
+
+  throw new Error('Unreachable');
 };
 
 const main = async (): Promise<void> => {
@@ -71,4 +87,8 @@ const main = async (): Promise<void> => {
   }, 10_000);
 };
 
-void main();
+const entryFile = process.argv[1];
+
+if (entryFile && import.meta.url === pathToFileURL(entryFile).href) {
+  void main();
+}
